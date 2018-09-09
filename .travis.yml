@@ -2,7 +2,7 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker build -t buckydigital/docker-react -f Dockerfile.dev . 
+  - docker build -t buckydigital/docker -f Dockerfile.dev . 
 
 script:
   - docker run buckydigital/docker-react npm run test -- --coverage
@@ -10,10 +10,10 @@ script:
 deploy:
   provider: elasticbeanstalk
   region: "us-west-1"
-  app: "docker-react"
-  env: "DockerReact-env"
+  app: "docker"
+  env: "Docker-env"
   bucket_name: "elasticbeanstalk-us-west-1-609098704775"
-  bucket_path: "docker-react"
+  bucket_path: "docker"
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
